@@ -1,0 +1,41 @@
+<templateSet group="Hardik">
+  <template name="File::store" value="$input = $request-&gt;all();&#10;if ($file = $request-&gt;file('$NAME$')) {&#10;    $root = base_path() . '/public/resource/$FOLDER$/';&#10;    $name = str_random(20) . &quot;.&quot; . $file-&gt;getClientOriginalExtension();&#10;    if (!file_exists($root)) {&#10;        mkdir($root, 0777, true);&#10;    }&#10;    $file-&gt;move($root, $name);&#10;    $input ['$NAME$'] = $name;&#10;}$END$&#10;" description="Upload file." toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;image&quot;" alwaysStopAt="true" />
+    <variable name="FOLDER" expression="" defaultValue="&quot;upload&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="File::Update" value="$input = $request-&gt;all();&#10;if ($file = $request-&gt;file('$NAME$')) {&#10;    $root = base_path() . '/public/resource/$FOLDER$/';&#10;    $name = str_random(20) . &quot;.&quot; . $file-&gt;getClientOriginalExtension();&#10;    if (!file_exists($root)) {&#10;        mkdir($root, 0777, true);&#10;    }&#10;    $file-&gt;move($root, $name);&#10;    File::delete('../public/resource/$FOLDER$/'.$product['$NAME$']);&#10;    $input ['$NAME$'] = $name;&#10;}$END$&#10;" description="Controller Update file" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;photo&quot;" alwaysStopAt="true" />
+    <variable name="FOLDER" expression="" defaultValue="&quot;photo&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="SQL" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="Twig" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JSX_HTML" value="false" />
+      <option name="JS_STATEMENT" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="PHP" value="true" />
+      <option name="PHP Comment" value="false" />
+      <option name="PHP String Literal" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+</templateSet>
