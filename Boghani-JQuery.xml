@@ -1,0 +1,68 @@
+<templateSet group="Hardik-JQuery">
+  <template name="hjq-ready method" value="$( document ).ready(function() {&#10;  $var1$ &#10;});$END$" description="jq Ready Method" toReformat="false" toShortenFQNames="true">
+    <variable name="var1" expression="" defaultValue="// Handler for .ready() called." alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="JAVA_SCRIPT" value="true" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JSX_HTML" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="PHP" value="true" />
+      <option name="PHP Comment" value="true" />
+      <option name="PHP String Literal" value="true" />
+    </context>
+  </template>
+  <template name="hjq-event" value="$( &quot;body&quot; ).on( &quot;click&quot;, &quot;#id&quot;, function() {&#10;  &#10;});" description="Event handling" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="JAVA_SCRIPT" value="true" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JSX_HTML" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="PHP" value="true" />
+      <option name="PHP Comment" value="true" />
+      <option name="PHP String Literal" value="true" />
+    </context>
+  </template>
+  <template name="hjq-ajax-validation-submit" value="$(&quot;.ajax_submit_product&quot;).submit(function (e) {&#10;        e.preventDefault();&#10;&#10;        $.ajax({&#10;            type: $(this).attr(&quot;method&quot;),&#10;            url: $(this).attr(&quot;action&quot;),&#10;            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)&#10;            contentType: false,&#10;            cache: false, // To unable request pages to be cached&#10;            processData: false, // To send DOMDocument or non processed data file it is set to false&#10;&#10;            beforeSend: function () {&#10;                //$('.panel').waitMe({effect: 'roundBounce'});&#10;            },&#10;            complete: function () {&#10;                //$('.panel').waitMe('hide');&#10;                //$(&quot;#loading&quot;).hide();&#10;            },&#10;            error: function (result) {&#10;                if (result.status === 401) //redirect if not authenticated user.&#10;                    $(location).prop('pathname', 'auth/login');&#10;                if (result.status == 422) {&#10;                    $('.form-group').each(function () {&#10;                        $(this).removeClass('has-error');&#10;                        $(this).children(&quot;.help-block&quot;).html(&quot;&quot;);&#10;                    });&#10;&#10;                    var json = result.responseJSON;&#10;                    $.each(json, function (key, value) {&#10;                        $(&quot;input[name='&quot; + key + &quot;'],textarea[name='&quot; + key + &quot;'],select[name='&quot; + key + &quot;'] &quot;).parent().addClass(&quot;has-error&quot;);&#10;                        $(&quot;input[name='&quot; + key + &quot;'],textarea[name='&quot; + key + &quot;'],select[name='&quot; + key + &quot;'] &quot;).next(&quot;.help-block&quot;).html(&quot;&lt;strong&gt;&quot; + value[0] + &quot;&lt;/strong&gt;&quot;);&#10;                    });&#10;                }&#10;            },&#10;            success: function (json) {&#10;&#10;                $('.form-group').each(function () {&#10;                    $(this).removeClass('has-error');&#10;                    $(this).children(&quot;.help-block&quot;).html(&quot;&quot;);&#10;                });&#10;                if (json.result == &quot;success&quot;) {&#10;                    window.location = json.url;&#10;                }&#10;            }&#10;        });&#10;    });" description="Ajax form validation and Submit form" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="JAVA_SCRIPT" value="true" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JSX_HTML" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="PHP" value="true" />
+      <option name="PHP Comment" value="true" />
+      <option name="PHP String Literal" value="true" />
+    </context>
+  </template>
+  <template name="hjq-ajax-with-custom-parameters" value="$.ajax({&#10;&#9;type: $(this).attr(&quot;method&quot;),&#10;    url: $(this).attr(&quot;action&quot;),&#10;&#9;data: {&#10;&#9;&#9;&quot;_token&quot;: &quot;{{ csrf_token() }}&quot; , &quot;data1&quot; : &quot;Test data&quot;&#10;&#9;},&#10;&#9;beforeSend: function () {&#10;&#9;&#9;//$('.panel').waitMe({effect: 'roundBounce'});&#10;&#9;},&#10;&#9;complete: function () {&#10;&#9;&#9;//$('.panel').waitMe('hide');&#10;&#9;&#9;//$(&quot;#loading&quot;).hide();&#10;&#9;},&#10;&#9;error: function (result) {},&#10;&#9;success: function (result) {&#10;&#9;&#9;//Success Code.&#10;&#9;}&#10;});" description="ajax with custom parameters" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="JAVA_SCRIPT" value="true" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JSX_HTML" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="PHP" value="true" />
+      <option name="PHP Comment" value="true" />
+      <option name="PHP String Literal" value="true" />
+    </context>
+  </template>
+  <template name="hjq-check-radio-checked" value="$(&quot;body&quot;).on('click', '.classname', function () {&#10;&#9;if($(this).is(':checked')){&#10;&#9;&#9;// If checked&#10;&#9;}else{&#10;&#9;&#9;// If not checked&#10;&#9;}&#10;});" description="Check radio/checkbox chacked" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="JAVA_SCRIPT" value="true" />
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JSX_HTML" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="PHP" value="true" />
+      <option name="PHP Comment" value="true" />
+      <option name="PHP String Literal" value="true" />
+    </context>
+  </template>
+</templateSet>
